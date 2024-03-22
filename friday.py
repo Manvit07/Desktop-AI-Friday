@@ -6,8 +6,8 @@ import webbrowser
 import os
 
 engine = pyttsx3.init('sapi5')
-voice = engine.getProperty('voices')
-engine.setProperty('voice', voice[1].id)
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
 
 def speak(audio):
     engine.say(audio)
@@ -15,117 +15,95 @@ def speak(audio):
 
 def get_time():
     current_time = datetime.datetime.now()
-    Time = current_time.strftime("%H:%M")
-    return Time
+    return current_time.strftime("%H:%M")
 
 def get_day():
     current_day = datetime.datetime.now()
-    day_of_week = current_day.strftime("%A")
-    return day_of_week
+    return current_day.strftime("%A")
 
 def get_date():
-    DATE = datetime.datetime.now().strftime('%B')
-    date = datetime.datetime.now().strftime(f'%d {DATE} %Y')
-    return date
+    return datetime.datetime.now().strftime('%d %B %Y')
 
-
-def wishMe():
-    hour = int(datetime.datetime.now().hour)
-    if hour>=0 and hour<12:
+def wish_me():
+    hour = datetime.datetime.now().hour
+    if 0 <= hour < 12:
         speak("Good Morning Boss!")
-
-    elif hour>=12 and hour<18:
+    elif 12 <= hour < 18:
         speak("Good Afternoon Boss!")
-
     else:
         speak("Good Evening Boss!")
+    speak("Friday at your service, how may I help you today?")
 
-    speak("i am friday , how may i help you today...")
-
-def calender():
+def calendar():
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print("listening...")
+        print("Listening...")
         r.pause_threshold = 1
         audio = r.listen(source)
     
     try:
         print("Recognizing...")
         status = r.recognize_google(audio, language='en-in')
-        print(f"user said: {status}\n")
+        print(f"User said: {status}\n")
     except Exception as e:
-        print("say that again please...")
+        print("Say that again please...")
         return "none"
     return status
 
-def takecommand():
+def take_command():
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print("listening...")
+        print("Listening...")
         r.pause_threshold = 1
         audio = r.listen(source)
     
     try:
         print("Recognizing...")
         query = r.recognize_google(audio, language='en-in')
-        print(f"user said: {query}\n")
+        print(f"User said: {query}\n")
     except Exception as e:
-        print("say that again please...")
+        print("Say that again please...")
         return "none"
-    return query
+    return query.lower()
 
 
 if __name__ == "__main__":
-    wishMe()
-    # while True:
-    if 1:
-        query = takecommand().lower()
+    wish_me()
+    
+    while True:
+        query = take_command()
 
         if "wikipedia" in query:
-            speak(f"searching wikipedia...  ")
-            results = wikipedia.summary(query, sentences = 2)
-            speak(f"according to wikipedia")
-            print(results)
-            speak(results)
-        
+            speak("Searching Wikipedia...")
+            try:
+                results = wikipedia.summary(query, sentences=2)
+                speak("According to Wikipedia")
+                print(results)
+                speak(results)
+            except wikipedia.exceptions.DisambiguationError:
+                speak("Could you please be more specific?")
+            except wikipedia.exceptions.PageError:
+                speak("Sorry, I couldn't find any relevant information.")
+            speak("Anything else I can help you with, sir?")
+
         elif 'open youtube' in query:
-            speak(f"opening youtube...  ")
-            webbrowser.open("youtube.com")
-        
+            speak("Just a second sir, opening YouTube...")
+            webbrowser.open("https://www.youtube.com/")
+            speak("Here you go sir. Anything else I can help you with?")
+
         elif 'playlist' in query:
-            speak(f"yes boss!. lights camera and music...")
+            speak("Yes boss! Lights, camera, and music...")
             webbrowser.open_new_tab("https://www.youtube.com/watch?v=YR12Z8f1Dh8&list=PLb0Wdm54HWRx0Itb6yWfuDxMn2AXozmfS")
+            speak("Enjoy your playlist sir. Anything else I can assist you with?")
 
         elif "music" in query:
-            speak(f'all right boss!...')
+            speak("Alright boss...")
             music_dir = 'D:\\my songs'
             songs = os.listdir(music_dir)
-            os.startfile(os.path.join(music_dir,songs[0] ))
-            
-else:
-       status = calender().lower()
+            os.startfile(os.path.join(music_dir, songs[0]))
+            speak("Playing your favorite music. Anything else you'd like?")
 
-       if "time" in status:
-            TIME = get_time()
-            speak(f"sir , the time is {TIME}")
-
-       elif 'date' in status:
-            DATE = get_date()
-            speak(f"sir , today's date is {DATE}")
-        
-       elif 'day' in status:
-            DAY = get_day()
-            speak(f"sir , today's day is {DAY}")
-
-  
-    
-       
-       
-
-        
-            
-        
-        
-
-
-        
+        elif 'friday stop' in query or any(keyword in query for keyword in ["close", "shut down", "sleep"]):
+            speak("Alright sir, with your permission...")
+            speak("Have a nice day sir!")
+            break
