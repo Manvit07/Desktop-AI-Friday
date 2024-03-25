@@ -86,11 +86,6 @@ if __name__ == "__main__":
             speak("Just a second sir, opening mail Box...")
             webbrowser.open("https://mail.google.com/mail/u/0/#inbox")
             speak("Here you go sir. Anything else I can help you with?")
-
-        elif 'song' in query:
-            speak("Yes boss! Lights, camera, and music...")
-            webbrowser.open_new_tab("https://www.youtube.com/watch?v=6FhTvzY5bxs")
-            speak("Enjoy your playlist sir. Anything else I can assist you with?")
             
         elif 'time' in query:
             speak(f" it's {get_time()} sir...")
