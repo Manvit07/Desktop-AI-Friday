@@ -91,14 +91,14 @@ if __name__ == "__main__":
             webbrowser.open("https://www.youtube.com/")
             speak("Here you go sir. Anything else I can help you with?")
 
-        elif 'playlist' in query:
+        elif 'song' in query:
             speak("Yes boss! Lights, camera, and music...")
-            webbrowser.open_new_tab("https://www.youtube.com/watch?v=YR12Z8f1Dh8&list=PLb0Wdm54HWRx0Itb6yWfuDxMn2AXozmfS")
+            webbrowser.open_new_tab("https://www.youtube.com/watch?v=6FhTvzY5bxs")
             speak("Enjoy your playlist sir. Anything else I can assist you with?")
 
-        elif "music" in query:
+        elif "playlist" in query:
             speak("Alright boss...")
-            music_dir = 'D:\\my songs'
+            music_dir = ''# put your music file address here to listen downloaded songs 
             songs = os.listdir(music_dir)
             os.startfile(os.path.join(music_dir, songs[0]))
             speak("Playing your favorite music. Anything else you'd like?")
