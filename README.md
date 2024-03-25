@@ -4,7 +4,7 @@ Welcome to Friday, your personal desktop AI assistant, designed to simplify your
 
 ## Overview
 
-Friday is a Python-based project that utilizes various libraries and modules to create an interactive AI assistant capable of performing a range of tasks through voice commands. With features like fetching information from Wikipedia, opening websites, and playing music, Friday aims to enhance your productivity and make your daily routine more efficient and enjoyable.
+Friday is a Python-based project that utilizes various libraries and modules to create an interactive AI assistant capable of performing a range of tasks through voice commands. With features like fetching information from opening websites, and playing music, Friday aims to enhance your productivity and make your daily routine more efficient and enjoyable.
 
 ## Features
 
@@ -16,15 +16,11 @@ Friday is a Python-based project that utilizes various libraries and modules to 
 - Retrieve the current time, date, and day of the week with simple voice commands.
 - Stay updated with essential information at your fingertips.
 
-### 3. Wikipedia Integration
-- Quickly search and fetch information from Wikipedia on various topics.
-- Get concise summaries of desired subjects without leaving your desktop.
-
-### 4. Web Browsing
+### 3. Web Browsing
 - Open your favorite websites, such as YouTube, with voice commands.
 - Enjoy easy access to online content without manually navigating browsers.
 
-### 5. Music Playback
+### 4. Music Playback
 - Play your favorite songs from a designated music directory effortlessly.
 - Enjoy a personalized music experience tailored to your preferences.
 
