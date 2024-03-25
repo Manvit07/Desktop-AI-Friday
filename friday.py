@@ -1,9 +1,8 @@
 import pyttsx3
 import speech_recognition as sr
 import datetime
-import wikipedia
 import webbrowser
-import os
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -101,13 +100,6 @@ if __name__ == "__main__":
         
         elif 'day' in query:
             get_day()
-
-        elif "playlist" in query:
-            speak("Alright boss...")
-            music_dir = ''# put your music file address here to listen downloaded songs 
-            songs = os.listdir(music_dir)
-            os.startfile(os.path.join(music_dir, songs[0]))
-            speak("Playing your favorite music. Anything else you'd like?")
 
         elif 'friday stop' in query or any(keyword in query for keyword in ["close", "shut down", "sleep"]):
             speak("Alright sir, with your permission...")
