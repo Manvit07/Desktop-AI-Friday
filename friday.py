@@ -78,12 +78,12 @@ if __name__ == "__main__":
             speak("Here you go sir. Anything else I can help you with?")
             
         elif 'open google' in query:
-            speak("Just a second sir, opening YouTube...")
+            speak("Just a second sir, opening google...")
             webbrowser.open("https://www.google.com/")
             speak("Here you go sir. Anything else I can help you with?")
 
         elif 'open mail' in query:
-            speak("Just a second sir, opening YouTube...")
+            speak("Just a second sir, opening mail Box...")
             webbrowser.open("https://mail.google.com/mail/u/0/#inbox")
             speak("Here you go sir. Anything else I can help you with?")
 
@@ -93,14 +93,17 @@ if __name__ == "__main__":
             speak("Enjoy your playlist sir. Anything else I can assist you with?")
             
         elif 'time' in query:
-            get_time()
-        
+            speak(f" it's {get_time()} sir...")
+            speak(" Anything else I can help you with?")
+            
         elif 'date' in query:
-            get_date()
-        
+            speak(f" today's date is {get_date()} sir...")
+            speak(" Anything else I can help you with?")
+            
         elif 'day' in query:
-            get_day()
-
+            speak(f" today is {get_day()} sir...")
+            speak(" Anything else I can help you with?")
+            
         elif 'friday stop' in query or any(keyword in query for keyword in ["close", "shut down", "sleep"]):
             speak("Alright sir, with your permission...")
             speak("Have a nice day sir!")
