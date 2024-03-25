@@ -73,20 +73,7 @@ if __name__ == "__main__":
     while True:
         query = take_command()
 
-        if "wikipedia" in query:
-            speak("Searching Wikipedia...")
-            try:
-                results = wikipedia.summary(query, sentences=2)
-                speak("According to Wikipedia")
-                print(results)
-                speak(results)
-            except wikipedia.exceptions.DisambiguationError:
-                speak("Could you please be more specific?")
-            except wikipedia.exceptions.PageError:
-                speak("Sorry, I couldn't find any relevant information.")
-            speak("Anything else I can help you with, sir?")
-
-        elif 'open youtube' in query:
+        if 'open youtube' in query:
             speak("Just a second sir, opening YouTube...")
             webbrowser.open("https://www.youtube.com/")
             speak("Here you go sir. Anything else I can help you with?")
