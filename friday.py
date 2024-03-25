@@ -100,7 +100,7 @@ if __name__ == "__main__":
             speak(f" today's date is {get_date()} sir...")
             speak(" Anything else I can help you with?")
             
-        elif 'day' in query:
+        elif 'week day' in query:
             speak(f" today is {get_day()} sir...")
             speak(" Anything else I can help you with?")
             
